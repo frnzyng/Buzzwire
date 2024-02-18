@@ -4,11 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class GameOverActivity extends AppCompatActivity {
-    private Button playAgainButton, exitButton;
+    private Button retryButton, exitButton;
+    TextView scoreTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,8 +18,11 @@ public class GameOverActivity extends AppCompatActivity {
         getWindow().getAttributes().windowAnimations = R.style.transitionNone;
         setContentView(R.layout.activity_game_over);
 
-        playAgainButton = findViewById(R.id.playAgainButton);
-        playAgainButton.setOnClickListener(new View.OnClickListener() {
+        scoreTextView = findViewById(R.id.scoreTextView);
+        scoreTextView.setText(MainActivity.time);
+
+        retryButton = findViewById(R.id.retryButton);
+        retryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);

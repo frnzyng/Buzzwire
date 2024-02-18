@@ -6,18 +6,38 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class MainActivity extends AppCompatActivity implements View.OnTouchListener {
-    private ImageView wireLoopImageView, finishBoxImageView;
-    private ImageView[] hitBoxImageView;
-    private int prevX, prevY;
-    private int screenWidth, screenHeight;
+    ImageView wireLoopImageView, finishBoxImageView;
+    ImageView[] hitBoxImageView;
+    TextView timerTextView;
+    Timer timer;
+    static String time;
+    private long startTime = 0;
+    long elapsedTime = 0;
+    private Handler timerHandler = new Handler();
+    private Runnable timerRunnable = new Runnable() {
+        @Override
+        public void run() {
+            startTimer();
+        }
+    };
+    Button pauseButton;
+    boolean isTimerPaused = false;
+    int prevX, prevY;
+    int screenWidth, screenHeight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +49,20 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         screenWidth = displayMetrics.widthPixels;
         screenHeight = displayMetrics.heightPixels;
+
+        // Timer
+        timerTextView = findViewById(R.id.timerTextView);
+        timer = new Timer();
+        startTime = System.currentTimeMillis();
+        timerHandler.postDelayed(timerRunnable, 0);
+
+        pauseButton = findViewById(R.id.pauseButton);
+        pauseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pauseTimer();
+            }
+        });
 
         hitBoxImageView = new ImageView[19];
         hitBoxImageView [0] = findViewById(R.id.imageView1);
@@ -60,6 +94,9 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
+        if (isTimerPaused) {
+            return false;
+        }
         int x = (int) event.getRawX();
         int y = (int) event.getRawY();
 
@@ -87,12 +124,14 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
                 // Check if the wire loop intersects with the finish box
                 if (isIntersecting(wireLoopImageView, finishBoxImageView)) {
+                    pauseTimer();
                     Intent intent = new Intent(getApplicationContext(), FinishActivity.class);
                     startActivity(intent);
                 } else {
                     // Check if the wire loop intersects with any of the hit box
                     for (ImageView imageView : hitBoxImageView) {
                         if (isIntersecting(wireLoopImageView, imageView)) {
+                            pauseTimer();
                             Intent intent = new Intent(getApplicationContext(), GameOverActivity.class);
                             startActivity(intent);
                         }
@@ -104,11 +143,41 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     }
 
     // Checks if the wire loop touches the hit box
-    private boolean isIntersecting(ImageView wireLoopImageView, ImageView hitBoxImageView) {
+    public boolean isIntersecting(ImageView wireLoopImageView, ImageView hitBoxImageView) {
         Rect rect1 = new Rect();
         wireLoopImageView.getHitRect(rect1);
         Rect rect2 = new Rect();
         hitBoxImageView.getHitRect(rect2);
         return rect1.intersect(rect2);
+    }
+
+    public void pauseTimer() {
+        if (!isTimerPaused) {
+            // Calculate elapsed time before pausing the timer
+            elapsedTime = System.currentTimeMillis() - startTime;
+
+            // Pause the timer
+            timerHandler.removeCallbacks(timerRunnable);
+            isTimerPaused = true;
+            pauseButton.setText("Resume");
+        } else {
+            // Resume the timer
+            startTime = System.currentTimeMillis() - elapsedTime;
+            timerHandler.postDelayed(timerRunnable, 0);
+            isTimerPaused = false;
+            pauseButton.setText("Pause");
+        }
+    }
+
+    public void startTimer() {
+        long milliseconds = System.currentTimeMillis() - startTime;
+        int seconds = (int) (milliseconds / 1000);
+        int minutes = seconds / 60;
+        seconds = seconds % 60;
+
+        timerTextView.setText(String.format("%02d:%02d", minutes, seconds));
+        time = timerTextView.getText().toString();
+
+        timerHandler.postDelayed(timerRunnable, 500); // Update every 0.5 seconds
     }
 }
