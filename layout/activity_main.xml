@@ -1,23 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Medium"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:textSize="20dp" />
+
+        <Button
+            android:id="@+id/pauseButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pause" />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/timerTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="00:00"
+        android:textAlignment="center"
+        android:textSize="20dp" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/gameLayout"
-        android:visibility="visible">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/wireImageView"
-            android:layout_width="380dp"
+            android:layout_width="370dp"
             android:layout_height="520dp"
-            android:layout_marginStart="2dp"
-            android:layout_marginEnd="2dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -28,9 +62,9 @@
             android:id="@+id/wireLoopImageView"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginStart="100dp"
-            android:layout_marginTop="444dp"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="148dp"
+            app:layout_constraintStart_toStartOf="@id/wireImageView"
             app:layout_constraintTop_toTopOf="@+id/wireImageView"
             app:srcCompat="@drawable/wire_loop" />
 
@@ -69,7 +103,7 @@
             app:layout_constraintHorizontal_bias="0.262"
             app:layout_constraintStart_toEndOf="@id/imageView2"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.217" />
+            app:layout_constraintVertical_bias="0.18" />
 
         <ImageView
             android:id="@+id/imageView4"
@@ -88,7 +122,6 @@
             android:layout_height="30dp"
             android:src="@drawable/hit_box"
             app:layout_constraintBottom_toBottomOf="@id/wireImageView"
-
             app:layout_constraintStart_toEndOf="@id/imageView4"
             app:layout_constraintTop_toTopOf="@id/wireImageView"
             app:layout_constraintVertical_bias="0.0" />
@@ -96,36 +129,37 @@
         <ImageView
             android:id="@+id/imageView6"
             android:layout_width="140dp"
-            android:layout_height="35dp"
+            android:layout_height="10dp"
             android:src="@drawable/hit_box"
             app:layout_constraintBottom_toBottomOf="@id/wireImageView"
             app:layout_constraintStart_toEndOf="@+id/imageView5"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.131" />
+            app:layout_constraintTop_toTopOf="@id/wireImageView"
+            app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
             android:id="@+id/imageView7"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
+            android:layout_width="40dp"
+            android:layout_height="25dp"
             android:src="@drawable/hit_box"
             app:layout_constraintBottom_toBottomOf="@id/wireImageView"
             app:layout_constraintStart_toEndOf="@id/imageView6"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.145" />
+            app:layout_constraintTop_toTopOf="@id/wireImageView"
+            app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
             android:id="@+id/imageView8"
-            android:layout_width="40dp"
-            android:layout_height="30dp"
+            android:layout_width="35dp"
+            android:layout_height="40dp"
             android:src="@drawable/hit_box"
             app:layout_constraintEnd_toEndOf="@id/wireImageView"
-            app:layout_constraintTop_toBottomOf="@id/imageView7"
+            app:layout_constraintStart_toEndOf="@id/imageView7"
+            app:layout_constraintTop_toTopOf="@id/wireImageView"
             tools:layout_editor_absoluteX="338dp" />
 
         <ImageView
             android:id="@+id/imageView9"
-            android:layout_width="30dp"
-            android:layout_height="100dp"
+            android:layout_width="25dp"
+            android:layout_height="110dp"
             android:src="@drawable/hit_box"
             app:layout_constraintEnd_toEndOf="@id/wireImageView"
             app:layout_constraintTop_toBottomOf="@id/imageView8"
@@ -133,21 +167,21 @@
 
         <ImageView
             android:id="@+id/imageView10"
-            android:layout_width="40dp"
-            android:layout_height="120dp"
+            android:layout_width="30dp"
+            android:layout_height="110dp"
             android:src="@drawable/hit_box"
             app:layout_constraintEnd_toEndOf="@id/wireImageView"
             app:layout_constraintTop_toBottomOf="@id/imageView9" />
 
         <ImageView
             android:id="@+id/imageView11"
-            android:layout_width="20dp"
-            android:layout_height="60dp"
+            android:layout_width="25dp"
+            android:layout_height="65dp"
             android:src="@drawable/hit_box"
             app:layout_constraintBottom_toBottomOf="@id/wireImageView"
             app:layout_constraintEnd_toStartOf="@id/imageView10"
             app:layout_constraintTop_toTopOf="@id/wireImageView"
-            app:layout_constraintVertical_bias="0.454" />
+            app:layout_constraintVertical_bias="0.448" />
 
         <ImageView
             android:id="@+id/imageView12"
@@ -156,12 +190,11 @@
             android:src="@drawable/hit_box"
             app:layout_constraintBottom_toBottomOf="@id/wireImageView"
             app:layout_constraintEnd_toStartOf="@id/imageView11"
-            app:layout_constraintTop_toTopOf="@id/wireImageView"
-            app:layout_constraintVertical_bias="0.498" />
+            app:layout_constraintTop_toTopOf="@id/wireImageView" />
 
         <ImageView
             android:id="@+id/imageView13"
-            android:layout_width="30dp"
+            android:layout_width="35dp"
             android:layout_height="30dp"
             android:src="@drawable/hit_box"
             app:layout_constraintBottom_toBottomOf="@id/wireImageView"
@@ -181,18 +214,18 @@
 
         <ImageView
             android:id="@+id/imageView15"
-            android:layout_width="35dp"
-            android:layout_height="45dp"
+            android:layout_width="30dp"
+            android:layout_height="40dp"
             android:src="@drawable/hit_box"
             app:layout_constraintBottom_toBottomOf="@id/wireImageView"
             app:layout_constraintEnd_toStartOf="@id/imageView14"
             app:layout_constraintTop_toTopOf="@id/wireImageView"
-            app:layout_constraintVertical_bias="0.651" />
+            app:layout_constraintVertical_bias="0.627" />
 
         <ImageView
             android:id="@+id/imageView16"
             android:layout_width="35dp"
-            android:layout_height="65dp"
+            android:layout_height="60dp"
             android:src="@drawable/hit_box"
             app:layout_constraintBottom_toBottomOf="@id/wireImageView"
             app:layout_constraintEnd_toStartOf="@id/imageView15"
@@ -201,8 +234,8 @@
 
         <ImageView
             android:id="@+id/imageView17"
-            android:layout_width="35dp"
-            android:layout_height="75dp"
+            android:layout_width="30dp"
+            android:layout_height="70dp"
             android:src="@drawable/hit_box"
             app:layout_constraintBottom_toBottomOf="@id/wireImageView"
             app:layout_constraintEnd_toStartOf="@id/imageView16"
@@ -241,44 +274,4 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.611" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/congratulationsLayout"
-        android:visibility="gone">
-
-        <Button
-            android:id="@+id/buttonExit2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="Exit"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonPlayAgain" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="284dp"
-            android:text="Congratulations!"
-            android:textSize="50dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/buttonPlayAgain"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:text="Play again"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>
