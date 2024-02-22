@@ -4,12 +4,12 @@ import android.os.Handler;
 import android.widget.TextView;
 
 public class TimerManager {
-    private String time;
-    private long startTime = 0;
-    private long elapsedTime = 0;
-    private Handler timerHandler;
-    private Runnable timerRunnable;
-    private TextView timerTextView;
+    String time;
+    long startTime = 0;
+    long elapsedTime = 0;
+    Handler timerHandler;
+    Runnable timerRunnable;
+    TextView timerTextView;
 
     public TimerManager(TextView textView) {
         timerTextView = textView;
@@ -22,6 +22,14 @@ public class TimerManager {
         };
         startTime = System.currentTimeMillis();
         timerHandler.postDelayed(timerRunnable, 0);
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    private void setTime(String time) {
+        this.time = time;
     }
 
     public void startTimer() {
@@ -50,13 +58,5 @@ public class TimerManager {
 
     public void stopTimer() {
         timerHandler.removeCallbacks(timerRunnable);
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    private void setTime(String time) {
-        this.time = time;
     }
 }

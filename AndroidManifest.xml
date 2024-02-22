@@ -13,7 +13,7 @@
         android:theme="@style/Theme.BuzzWire"
         tools:targetApi="31">
         <activity
-            android:name=".MediumActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -23,13 +23,14 @@
         </activity>
         <activity android:name=".EasyActivity"/>
         <activity android:name=".HardActivity"/>
+        <activity android:name=".MediumActivity"/>
+        <activity android:name=".SettingsActivity"/>
         <activity
             android:name=".GameOverActivity"
             android:theme="@style/transitionNone"/>
         <activity
             android:name=".FinishActivity"
             android:theme="@style/transitionNone"/>
-        <activity android:name=".MainActivity"/>
     </application>
 
 </manifest>
