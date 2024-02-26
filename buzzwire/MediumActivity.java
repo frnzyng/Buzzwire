@@ -60,31 +60,17 @@ public class MediumActivity extends AppCompatActivity implements View.OnTouchLis
         });
 
         // Hit and finish box
-        hitBoxImageView = new ImageView[19];
-        hitBoxImageView[0] = findViewById(R.id.imageView1);
-        hitBoxImageView[1] = findViewById(R.id.imageView2);
-        hitBoxImageView[2] = findViewById(R.id.imageView3);
-        hitBoxImageView[3] = findViewById(R.id.imageView4);
-        hitBoxImageView[4] = findViewById(R.id.imageView5);
-        hitBoxImageView[5] = findViewById(R.id.imageView6);
-        hitBoxImageView[6] = findViewById(R.id.imageView7);
-        hitBoxImageView[7] = findViewById(R.id.imageView8);
-        hitBoxImageView[8] = findViewById(R.id.imageView9);
-        hitBoxImageView[9] = findViewById(R.id.imageView10);
-        hitBoxImageView[10] = findViewById(R.id.imageView11);
-        hitBoxImageView[11] = findViewById(R.id.imageView12);
-        hitBoxImageView[12] = findViewById(R.id.imageView13);
-        hitBoxImageView[13] = findViewById(R.id.imageView14);
-        hitBoxImageView[14] = findViewById(R.id.imageView15);
-        hitBoxImageView[15] = findViewById(R.id.imageView16);
-        hitBoxImageView[16] = findViewById(R.id.imageView17);
-        hitBoxImageView[17] = findViewById(R.id.imageView18);
-        hitBoxImageView[18] = findViewById(R.id.imageView19);
+        hitBoxImageView = new ImageView[98];
+        for (int i = 0; i < 98; i++) {
+            int resId = getResources().getIdentifier("imageView" + (i + 1), "id", getPackageName());
+            hitBoxImageView[i] = findViewById(resId);
+        }
+
 
         finishBoxImageView = findViewById(R.id.finishBox);
 
         // Set on touch listener to drag the loop
-        wireLoopImageView = findViewById(R.id.wireLoopImageView);
+        wireLoopImageView = findViewById(R.id.metalLoopImageView);
         wireLoopImageView.setOnTouchListener(this);
     }
 
