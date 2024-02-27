@@ -4,39 +4,76 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".SlayedActivity">
 
     <ImageView
-        android:id="@+id/imageViewMainBG"
+        android:id="@+id/imageViewSlayedBG"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/main_bg" />
+        app:srcCompat="@drawable/slayed_bg" />
 
     <ImageView
-        android:id="@+id/imageViewTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="350dp"
+        android:id="@+id/imageViewSlayed"
+        android:layout_width="350dp"
+        android:layout_height="100dp"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.488"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.437"
-        app:srcCompat="@drawable/title" />
+        app:layout_constraintVertical_bias="0.258"
+        app:srcCompat="@drawable/slayed_txt" />
+
+    <ImageView
+        android:id="@+id/imageViewConfetti"
+        android:layout_width="150dp"
+        android:layout_height="80dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499"
+        app:srcCompat="@drawable/slayed_confetti" />
+
+    <ImageView
+        android:id="@+id/imageViewTime"
+        android:layout_width="120dp"
+        android:layout_height="60dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.585"
+        app:srcCompat="@drawable/time_txt" />
+
+    <TextView
+        android:id="@+id/textViewScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/aubette_architype"
+        android:text="00:00"
+        android:textColor="@color/white"
+        android:textSize="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.713" />
 
     <ImageButton
-        android:id="@+id/imageButtonPlay"
+        android:id="@+id/imageButtonPlayAgain"
         android:layout_width="150dp"
         android:layout_height="55dp"
-        android:layout_marginBottom="-50dp"
         android:background="@null"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -44,14 +81,13 @@
         app:layout_constraintHorizontal_bias="0.150"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.75"
-        app:srcCompat="@drawable/play_btn" />
+        app:layout_constraintVertical_bias="0.952"
+        app:srcCompat="@drawable/play_again_btn" />
 
     <ImageButton
-        android:id="@+id/imageButtonScores"
+        android:id="@+id/imageButtonHome"
         android:layout_width="150dp"
         android:layout_height="55dp"
-        android:layout_marginBottom="-50dp"
         android:background="@null"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -59,40 +95,7 @@
         app:layout_constraintHorizontal_bias="0.850"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.75"
-        app:srcCompat="@drawable/scores_btn" />
-
-    <ImageButton
-        android:id="@+id/imageButtonReturn"
-        android:layout_width="80dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="-100dp"
-        android:layout_marginTop="-100dp"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.270"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.133"
-        app:srcCompat="@drawable/return_btn" />
-
-    <ImageButton
-        android:id="@+id/imageButtonSettings"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="-100dp"
-        android:layout_marginEnd="-100dp"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.740"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.135"
-        app:srcCompat="@drawable/settings_btn" />
-
+        app:layout_constraintVertical_bias="0.952"
+        app:srcCompat="@drawable/home_btn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,17 +14,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 public class MediumActivity extends AppCompatActivity implements View.OnTouchListener {
-    Button pauseButton;
-    ImageView wireLoopImageView, finishBoxImageView;
+    ImageButton returnButton, pauseButton;
+    ImageView loopImageView, finishBoxImageView;
     ImageView[] hitBoxImageView;
     TextView timerTextView;
-    TimerManager timerManager;
 
     boolean isTimerPaused = false;
     int prevX, prevY;
     int screenWidth, screenHeight;
+    TimerManager timerManager;
     User user = User.getUser();
     Indicator indicator = Indicator.getIndicator();
+    SoundManager soundManager = SoundManager.getSoundManager();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,23 +39,33 @@ public class MediumActivity extends AppCompatActivity implements View.OnTouchLis
         screenHeight = displayMetrics.heightPixels;
 
         // Timer
-        timerTextView = findViewById(R.id.timerTextView); // Get reference to timer TextView
+        timerTextView = findViewById(R.id.textViewTimer); // Get reference to timer TextView
         timerManager = new TimerManager(timerTextView);
         timerManager.startTimer();
 
+        returnButton = findViewById(R.id.imageButtonReturn);
+        returnButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                soundManager.playButtonSound();
+                getOnBackPressedDispatcher().onBackPressed();
+            }
+        });
+
         // Pause or resume button
-        pauseButton = findViewById(R.id.pauseButton);
+        pauseButton = findViewById(R.id.imageButtonPause);
         pauseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                soundManager.playButtonSound();
                 if (isTimerPaused) {
                     timerManager.resumeTimer();
                     isTimerPaused = false;
-                    pauseButton.setText("Pause");
+                    pauseButton.setImageResource(R.drawable.pause_icon_btn);
                 } else {
                     timerManager.pauseTimer();
                     isTimerPaused = true;
-                    pauseButton.setText("Resume");
+                    pauseButton.setImageResource(R.drawable.play_icon_btn);
                 }
             }
         });
@@ -70,8 +81,8 @@ public class MediumActivity extends AppCompatActivity implements View.OnTouchLis
         finishBoxImageView = findViewById(R.id.finishBox);
 
         // Set on touch listener to drag the loop
-        wireLoopImageView = findViewById(R.id.metalLoopImageView);
-        wireLoopImageView.setOnTouchListener(this);
+        loopImageView = findViewById(R.id.imageViewLoop);
+        loopImageView.setOnTouchListener(this);
     }
 
     @Override
@@ -104,24 +115,30 @@ public class MediumActivity extends AppCompatActivity implements View.OnTouchLis
 
                 v.setLayoutParams(layoutParams);
 
-                // Check if the wire loop intersects with the finish box
-                if (isIntersecting(wireLoopImageView, finishBoxImageView)) {
+                // Check if the metal loop intersects with the finish box
+                if (isIntersecting(loopImageView, finishBoxImageView)) {
                     timerManager.stopTimer();
                     user.setScoreMedium(timerManager.getTime());
                     indicator.setFlag("Medium");
 
-                    Intent intent = new Intent(getApplicationContext(), FinishActivity.class);
+                    compareScore(user.getScoreMedium(), user.getBestScoreMedium());
+
+                    Intent intent = new Intent(getApplicationContext(), SlayedActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
+                    finish();
                 } else {
-                    // Check if the wire loop intersects with any of the hit box
+                    // Check if the metal loop intersects with any of the hit box
                     for (ImageView imageView : hitBoxImageView) {
-                        if (isIntersecting(wireLoopImageView, imageView)) {
+                        if (isIntersecting(loopImageView, imageView)) {
                             timerManager.stopTimer();
                             user.setScoreMedium(timerManager.getTime());
                             indicator.setFlag("Medium");
 
-                            Intent intent = new Intent(getApplicationContext(), GameOverActivity.class);
+                            Intent intent = new Intent(getApplicationContext(), AwitActivity.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
+                            finish();
                         }
                     }
                 }
@@ -130,12 +147,53 @@ public class MediumActivity extends AppCompatActivity implements View.OnTouchLis
         return true;
     }
 
-    // Checks if the wire loop touches the hit box
+    // Checks if the metal loop touches the hit box
     public boolean isIntersecting(ImageView wireLoopImageView, ImageView hitBoxImageView) {
         Rect rect1 = new Rect();
         wireLoopImageView.getHitRect(rect1);
         Rect rect2 = new Rect();
         hitBoxImageView.getHitRect(rect2);
         return rect1.intersect(rect2);
+    }
+
+    // Compare score to set the new best score
+    public void compareScore(String currentScore, String bestScore) {
+        int score1 = timeStringToSeconds(currentScore);
+        int score2 = timeStringToSeconds(bestScore);
+
+        if (bestScore.equals("00:00")) {
+            user.setBestScoreMedium(currentScore);
+        } else if (score1 < score2) {
+            user.setBestScoreMedium(currentScore);
+        }
+    }
+
+    public int timeStringToSeconds(String timeString) {
+        String[] timeParts = timeString.split(":");
+        int minutes = Integer.parseInt(timeParts[0]);
+        int seconds = Integer.parseInt(timeParts[1]);
+
+        return minutes * 60 + seconds;
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if(soundManager.isMusicOn) {
+            if(soundManager.backgroundMusicPlayer.isPlaying()) {
+                soundManager.backgroundMusicPlayer.pause();
+            }
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(soundManager.isMusicOn) {
+            if(!soundManager.backgroundMusicPlayer.isPlaying()) {
+                soundManager.turnOnMusic();
+                soundManager.playBackgroundMusic();
+            }
+        }
     }
 }

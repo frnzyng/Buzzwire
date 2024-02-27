@@ -4,95 +4,88 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".PlayActivity">
 
     <ImageView
-        android:id="@+id/imageViewMainBG"
+        android:id="@+id/imageViewPlayBG"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/main_bg" />
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/play_bg" />
 
     <ImageView
-        android:id="@+id/imageViewTitle"
+        android:id="@+id/imageViewBuzzWire"
         android:layout_width="wrap_content"
-        android:layout_height="350dp"
+        android:layout_height="250dp"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.437"
-        app:srcCompat="@drawable/title" />
+        app:layout_constraintVertical_bias="0.057"
+        app:srcCompat="@drawable/play_txt" />
 
     <ImageButton
-        android:id="@+id/imageButtonPlay"
+        android:id="@+id/imageButtonEasy"
+        android:layout_width="200dp"
+        android:layout_height="80dp"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.433"
+        app:srcCompat="@drawable/easy_btn" />
+
+    <ImageButton
+        android:id="@+id/imageButtonMedium"
+        android:layout_width="200dp"
+        android:layout_height="80dp"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.57"
+        app:srcCompat="@drawable/medium_btn" />
+
+    <ImageButton
+        android:id="@+id/imageButtonHard"
+        android:layout_width="200dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="-100dp"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.622"
+        app:srcCompat="@drawable/hard_btn" />
+
+    <ImageButton
+        android:id="@+id/imageButtonBack"
         android:layout_width="150dp"
         android:layout_height="55dp"
-        android:layout_marginBottom="-50dp"
+        android:layout_marginBottom="70dp"
         android:background="@null"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.150"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.75"
-        app:srcCompat="@drawable/play_btn" />
-
-    <ImageButton
-        android:id="@+id/imageButtonScores"
-        android:layout_width="150dp"
-        android:layout_height="55dp"
-        android:layout_marginBottom="-50dp"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.850"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.75"
-        app:srcCompat="@drawable/scores_btn" />
-
-    <ImageButton
-        android:id="@+id/imageButtonReturn"
-        android:layout_width="80dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="-100dp"
-        android:layout_marginTop="-100dp"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.270"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.133"
-        app:srcCompat="@drawable/return_btn" />
-
-    <ImageButton
-        android:id="@+id/imageButtonSettings"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="-100dp"
-        android:layout_marginEnd="-100dp"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.740"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.135"
-        app:srcCompat="@drawable/settings_btn" />
-
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/back_btn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
