@@ -77,7 +77,6 @@ public class MediumActivity extends AppCompatActivity implements View.OnTouchLis
             hitBoxImageView[i] = findViewById(resId);
         }
 
-
         finishBoxImageView = findViewById(R.id.finishBox);
 
         // Set on touch listener to drag the loop

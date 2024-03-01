@@ -14,6 +14,7 @@ public class AwitActivity extends AppCompatActivity {
     TextView scoreTextView;
     Indicator indicator = Indicator.getIndicator();
     String flag = indicator.getFlag();
+    User user = User.getUser();
     SoundManager soundManager = SoundManager.getSoundManager();
 
     @Override
@@ -22,9 +23,21 @@ public class AwitActivity extends AppCompatActivity {
         getWindow().getAttributes().windowAnimations = R.style.transitionNone;
         setContentView(R.layout.activity_awit);
 
-        User user = User.getUser();
         scoreTextView = findViewById(R.id.textViewScore);
-        scoreTextView.setText(user.getScoreMedium());
+
+        soundManager.playLoseSound();
+
+        switch (flag) {
+            case "Easy":
+                scoreTextView.setText(user.getScoreEasy());
+                break;
+            case "Medium":
+                scoreTextView.setText(user.getScoreMedium());
+                break;
+            case "Hard":
+                scoreTextView.setText(user.getScoreHard());
+                break;
+        }
 
         playAgainButton = findViewById(R.id.imageButtonPlayAgain);
         playAgainButton.setOnClickListener(new View.OnClickListener() {
@@ -71,27 +84,6 @@ public class AwitActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
                 break;
-            }
-        }
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        if(soundManager.isMusicOn) {
-            if(soundManager.backgroundMusicPlayer.isPlaying()) {
-                soundManager.backgroundMusicPlayer.pause();
-            }
-        }
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if(soundManager.isMusicOn) {
-            if(!soundManager.backgroundMusicPlayer.isPlaying()) {
-                soundManager.turnOnMusic();
-                soundManager.playBackgroundMusic();
             }
         }
     }

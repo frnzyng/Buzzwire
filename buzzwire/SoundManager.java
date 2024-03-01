@@ -4,7 +4,7 @@ import android.media.MediaPlayer;
 
 public class SoundManager {
     static SoundManager soundManager = new SoundManager();
-    MediaPlayer backgroundMusicPlayer, buttonSoundPlayer;
+    MediaPlayer backgroundMusicPlayer, buttonSoundPlayer, winSoundPlayer, loseSoundPlayer;
     Boolean isMusicOn = true;
     Boolean isSoundOn = true;
 
@@ -20,6 +20,14 @@ public class SoundManager {
         this.buttonSoundPlayer = buttonSound;
     }
 
+    public void setWinSoundPlayer(MediaPlayer winSoundPlayer) {
+        this.winSoundPlayer = winSoundPlayer;
+    }
+
+    public void setLoseSoundPlayer(MediaPlayer loseSoundPlayer) {
+        this.loseSoundPlayer = loseSoundPlayer;
+    }
+
     public void playBackgroundMusic() {
         if (isMusicOn) {
             backgroundMusicPlayer.start();
@@ -30,6 +38,18 @@ public class SoundManager {
     public void playButtonSound() {
         if (isSoundOn) {
             buttonSoundPlayer.start();
+        }
+    }
+
+    public void playWinSound() {
+        if (isSoundOn) {
+            winSoundPlayer.start();
+        }
+    }
+
+    public void playLoseSound() {
+        if (isSoundOn) {
+            loseSoundPlayer.start();
         }
     }
 

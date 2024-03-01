@@ -21,6 +21,7 @@ public class PlayActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 soundManager.playButtonSound();
+                easyButton.setImageResource(R.drawable.easy_btn_p);
                 Intent intent = new Intent(getApplicationContext(), EasyActivity.class);
                 startActivity(intent);
             }
@@ -31,6 +32,7 @@ public class PlayActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 soundManager.playButtonSound();
+                mediumButton.setImageResource(R.drawable.medium_btn_p);
                 Intent intent = new Intent(getApplicationContext(), MediumActivity.class);
                 startActivity(intent);
             }
@@ -41,6 +43,7 @@ public class PlayActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 soundManager.playButtonSound();
+                hardButton.setImageResource(R.drawable.hard_btn_p);
                 Intent intent = new Intent(getApplicationContext(), HardActivity.class);
                 startActivity(intent);
             }
@@ -77,5 +80,10 @@ public class PlayActivity extends AppCompatActivity {
                 soundManager.playBackgroundMusic();
             }
         }
+
+        // Set buttons to its default background
+        easyButton.setImageResource(R.drawable.easy_btn);
+        mediumButton.setImageResource(R.drawable.medium_btn);
+        hardButton.setImageResource(R.drawable.hard_btn);
     }
 }

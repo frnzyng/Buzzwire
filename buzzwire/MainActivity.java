@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 public class MainActivity extends AppCompatActivity {
@@ -21,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
         // Initialize media player and play bg music
         soundManager.setBackgroundMusic(MediaPlayer.create(this, R.raw.background_music));
         soundManager.setButtonSound(MediaPlayer.create(this, R.raw.button_press_sound));
+        soundManager.setWinSoundPlayer(MediaPlayer.create(this, R.raw.win_sound));
+        soundManager.setLoseSoundPlayer(MediaPlayer.create(this, R.raw.lose_sound));
         soundManager.playBackgroundMusic();
 
         playButton = findViewById(R.id.imageButtonPlay);
