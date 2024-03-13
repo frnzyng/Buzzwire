@@ -6,279 +6,92 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/gameLayout"
-        android:visibility="visible">
+    <ImageView
+        android:id="@+id/imageViewMainBG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/main_bg" />
 
-        <ImageView
-            android:id="@+id/wireImageView"
-            android:layout_width="380dp"
-            android:layout_height="520dp"
-            android:layout_marginStart="2dp"
-            android:layout_marginEnd="2dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/wire" />
+    <ImageView
+        android:id="@+id/imageViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="500dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.299"
+        app:srcCompat="@drawable/buzzwire_txt_main" />
 
-        <ImageView
-            android:id="@+id/wireLoopImageView"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="100dp"
-            android:layout_marginTop="444dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/wireImageView"
-            app:srcCompat="@drawable/wire_loop" />
+    <ImageButton
+        android:id="@+id/imageButtonPlay"
+        android:layout_width="150dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="-50dp"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.150"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.765"
+        app:srcCompat="@drawable/play_btn" />
 
-        <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="55dp"
-            android:layout_height="50dp"
-            android:src="@drawable/hit_box"
-            app:layout_constraintBottom_toBottomOf="@id/wireImageView"
-            app:layout_constraintEnd_toStartOf="@+id/imageView2"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/wireImageView"
-            app:layout_constraintTop_toTopOf="@id/wireImageView"
-            app:layout_constraintVertical_bias="0.182" />
+    <ImageButton
+        android:id="@+id/imageButtonScores"
+        android:layout_width="150dp"
+        android:layout_height="55dp"
+        android:layout_marginBottom="-50dp"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.850"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.765"
+        app:srcCompat="@drawable/scores_btn" />
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="30dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="64dp"
-            android:src="@drawable/hit_box"
-            app:layout_constraintBottom_toBottomOf="@id/wireImageView"
-            app:layout_constraintEnd_toStartOf="@id/imageView3"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@id/imageView1"
-            app:layout_constraintTop_toTopOf="@id/wireImageView"
-            app:layout_constraintVertical_bias="0.0" />
+    <ImageButton
+        android:id="@+id/imageButtonReturn"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="-100dp"
+        android:layout_marginTop="-100dp"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.270"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.133"
+        app:srcCompat="@drawable/return_btn" />
 
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="20dp"
-            android:layout_height="50dp"
-            android:src="@drawable/hit_box"
-            app:layout_constraintBottom_toBottomOf="@id/wireImageView"
-            app:layout_constraintEnd_toStartOf="@id/imageView4"
-            app:layout_constraintHorizontal_bias="0.262"
-            app:layout_constraintStart_toEndOf="@id/imageView2"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.217" />
+    <ImageButton
+        android:id="@+id/imageButtonSettings"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="-100dp"
+        android:layout_marginEnd="-100dp"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.740"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.135"
+        app:srcCompat="@drawable/settings_btn" />
 
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="20dp"
-            android:layout_height="50dp"
-            android:src="@drawable/hit_box"
-            app:layout_constraintBottom_toBottomOf="@id/wireImageView"
-            app:layout_constraintEnd_toStartOf="@id/imageView5"
-            app:layout_constraintStart_toEndOf="@id/imageView3"
-            app:layout_constraintTop_toTopOf="@id/wireImageView"
-            app:layout_constraintVertical_bias="0.0" />
 
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/hit_box"
-            app:layout_constraintBottom_toBottomOf="@id/wireImageView"
-
-            app:layout_constraintStart_toEndOf="@id/imageView4"
-            app:layout_constraintTop_toTopOf="@id/wireImageView"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <ImageView
-            android:id="@+id/imageView6"
-            android:layout_width="140dp"
-            android:layout_height="35dp"
-            android:src="@drawable/hit_box"
-            app:layout_constraintBottom_toBottomOf="@id/wireImageView"
-            app:layout_constraintStart_toEndOf="@+id/imageView5"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.131" />
-
-        <ImageView
-            android:id="@+id/imageView7"
-            android:layout_width="50dp"
-            android:layout_height="40dp"
-            android:src="@drawable/hit_box"
-            app:layout_constraintBottom_toBottomOf="@id/wireImageView"
-            app:layout_constraintStart_toEndOf="@id/imageView6"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.145" />
-
-        <ImageView
-            android:id="@+id/imageView8"
-            android:layout_width="40dp"
-            android:layout_height="30dp"
-            android:src="@drawable/hit_box"
-            app:layout_constraintEnd_toEndOf="@id/wireImageView"
-            app:layout_constraintTop_toBottomOf="@id/imageView7"
-            tools:layout_editor_absoluteX="338dp" />
-
-        <ImageView
-            android:id="@+id/imageView9"
-            android:layout_width="30dp"
-            android:layout_height="100dp"
-            android:src="@drawable/hit_box"
-            app:layout_constraintEnd_toEndOf="@id/wireImageView"
-            app:layout_constraintTop_toBottomOf="@id/imageView8"
-            app:layout_constraintVertical_bias="0.319" />
-
-        <ImageView
-            android:id="@+id/imageView10"
-            android:layout_width="40dp"
-            android:layout_height="120dp"
-            android:src="@drawable/hit_box"
-            app:layout_constraintEnd_toEndOf="@id/wireImageView"
-            app:layout_constraintTop_toBottomOf="@id/imageView9" />
-
-        <ImageView
-            android:id="@+id/imageView11"
-            android:layout_width="20dp"
-            android:layout_height="60dp"
-            android:src="@drawable/hit_box"
-            app:layout_constraintBottom_toBottomOf="@id/wireImageView"
-            app:layout_constraintEnd_toStartOf="@id/imageView10"
-            app:layout_constraintTop_toTopOf="@id/wireImageView"
-            app:layout_constraintVertical_bias="0.454" />
-
-        <ImageView
-            android:id="@+id/imageView12"
-            android:layout_width="25dp"
-            android:layout_height="50dp"
-            android:src="@drawable/hit_box"
-            app:layout_constraintBottom_toBottomOf="@id/wireImageView"
-            app:layout_constraintEnd_toStartOf="@id/imageView11"
-            app:layout_constraintTop_toTopOf="@id/wireImageView"
-            app:layout_constraintVertical_bias="0.498" />
-
-        <ImageView
-            android:id="@+id/imageView13"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/hit_box"
-            app:layout_constraintBottom_toBottomOf="@id/wireImageView"
-            app:layout_constraintEnd_toStartOf="@id/imageView12"
-            app:layout_constraintTop_toTopOf="@id/wireImageView"
-            app:layout_constraintVertical_bias="0.537" />
-
-        <ImageView
-            android:id="@+id/imageView14"
-            android:layout_width="35dp"
-            android:layout_height="30dp"
-            android:src="@drawable/hit_box"
-            app:layout_constraintBottom_toBottomOf="@id/wireImageView"
-            app:layout_constraintEnd_toStartOf="@id/imageView13"
-            app:layout_constraintTop_toTopOf="@id/wireImageView"
-            app:layout_constraintVertical_bias="0.579" />
-
-        <ImageView
-            android:id="@+id/imageView15"
-            android:layout_width="35dp"
-            android:layout_height="45dp"
-            android:src="@drawable/hit_box"
-            app:layout_constraintBottom_toBottomOf="@id/wireImageView"
-            app:layout_constraintEnd_toStartOf="@id/imageView14"
-            app:layout_constraintTop_toTopOf="@id/wireImageView"
-            app:layout_constraintVertical_bias="0.651" />
-
-        <ImageView
-            android:id="@+id/imageView16"
-            android:layout_width="35dp"
-            android:layout_height="65dp"
-            android:src="@drawable/hit_box"
-            app:layout_constraintBottom_toBottomOf="@id/wireImageView"
-            app:layout_constraintEnd_toStartOf="@id/imageView15"
-            app:layout_constraintTop_toTopOf="@id/wireImageView"
-            app:layout_constraintVertical_bias="0.72" />
-
-        <ImageView
-            android:id="@+id/imageView17"
-            android:layout_width="35dp"
-            android:layout_height="75dp"
-            android:src="@drawable/hit_box"
-            app:layout_constraintBottom_toBottomOf="@id/wireImageView"
-            app:layout_constraintEnd_toStartOf="@id/imageView16"
-            app:layout_constraintTop_toTopOf="@id/wireImageView"
-            app:layout_constraintVertical_bias="0.766" />
-
-        <ImageView
-            android:id="@+id/imageView18"
-            android:layout_width="20dp"
-            android:layout_height="60dp"
-            android:src="@drawable/hit_box"
-            app:layout_constraintBottom_toBottomOf="@id/wireImageView"
-            app:layout_constraintEnd_toStartOf="@id/imageView17"
-            app:layout_constraintTop_toTopOf="@id/wireImageView"
-            app:layout_constraintVertical_bias="0.789" />
-
-        <ImageView
-            android:id="@+id/imageView19"
-            android:layout_width="10dp"
-            android:layout_height="30dp"
-            android:src="@drawable/hit_box"
-            app:layout_constraintBottom_toBottomOf="@id/wireImageView"
-            app:layout_constraintEnd_toStartOf="@id/imageView18"
-            app:layout_constraintTop_toTopOf="@id/wireImageView"
-            app:layout_constraintVertical_bias="0.781" />
-
-        <ImageView
-            android:id="@+id/finishBox"
-            android:layout_width="35dp"
-            android:layout_height="108dp"
-            android:src="@drawable/finish_box"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.611" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/congratulationsLayout"
-        android:visibility="gone">
-
-        <Button
-            android:id="@+id/buttonExit2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="Exit"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonPlayAgain" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="284dp"
-            android:text="Congratulations!"
-            android:textSize="50dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/buttonPlayAgain"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:text="Play again"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
