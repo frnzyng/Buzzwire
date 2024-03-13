@@ -1,2 +1,2 @@
-# CTAPDEVL
-Application Development and Emerging Technologies Course
+# Buzzwire
+Buzzwire mobile game made in Android Studio
